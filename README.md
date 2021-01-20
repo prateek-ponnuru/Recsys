@@ -1,2 +1,2 @@
-# epita
+# recsys
 Assignments
