@@ -2,6 +2,7 @@ from surprise import Dataset
 from surprise.dataset import DatasetAutoFolds
 from pathlib import Path
 from surprise import Reader
+import pandas as pd
 
 
 def load_ratings_from_surprise(name : str) -> DatasetAutoFolds:
@@ -17,5 +18,9 @@ def load_ratings_from_file(name : str) -> DatasetAutoFolds:
 
 def get_data(name : str, from_surprise : bool = True) -> DatasetAutoFolds:
     data = load_ratings_from_surprise(name) if from_surprise else load_ratings_from_file(name)
+    return data
+
+def get_item_data(name : str, data_dir : Path) -> pd.DataFrame:
+    data = pd.read_csv(Path(data_dir, name))
     return data
 
